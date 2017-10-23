@@ -172,8 +172,15 @@ function tagsEncode(emvTags) {
     let data = Object.assign({}, emvTags);
     let dolOrder = ['CDOL1', 'CDOL2', 'TDOL', 'PDOL', 'DDOL'];
     let result = '';
+    let allTags = Object.keys(data)
+        .sort((a, b) => {
+            if((!data[a].idx && data[a].idx !==0) || (!data[b].idx && data[b].idx !== 0)) {
+                return 0;
+            }
+            return data[a].idx - data[b].idx;
+        });
     // transform data in dols
-    data = Object.keys(data)
+    data = allTags
         .filter((k) => (k.includes('DOL')))
         .map((k) => {
             let dol = data[k];
@@ -196,8 +203,6 @@ function tagsEncode(emvTags) {
             data[dol.tag] = dol.data.join('');
             return data;
         }, data);
-
-    let allTags = Object.keys(data);
     // make sure that dols are constructed in order
     let allDols = dolOrder
         .map((dol) => (allTags.includes(dol) ? dol : 0))
@@ -220,7 +225,7 @@ function tagsEncode(emvTags) {
             return r;
         }, data);
     // append all fields left to result
-    return result + Object.keys(data).map((e) => {
+    return result + allTags.map((e) => {
         let tagTranslated = translateTagEncode(e);
         let tagObj = data[e];
         let tagLength = getValueHexLength(tagObj);
