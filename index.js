@@ -174,7 +174,7 @@ function tagsEncode(emvTags) {
     let result = '';
     let allTags = Object.keys(data)
         .sort((a, b) => {
-            if((!data[a].idx && data[a].idx !==0) || (!data[b].idx && data[b].idx !== 0)) {
+            if ((!data[a].idx && data[a].idx !== 0) || (!data[b].idx && data[b].idx !== 0)) {
                 return 0;
             }
             return data[a].idx - data[b].idx;
