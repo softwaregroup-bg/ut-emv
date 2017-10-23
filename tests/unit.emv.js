@@ -1,5 +1,5 @@
 const test = require('blue-tape');
-const emv = require('../emv');
+const emv = require('../index');
 
 const validEmv = {
     'primitive tag': '5A09000000000000000000',
