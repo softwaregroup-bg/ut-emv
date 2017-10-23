@@ -1,9 +1,8 @@
 {
   "name": "ut-emv",
-  "version": "6.0.0",
+  "version": "6.1.0",
   "main": "./index.js",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "blue-tape": "1.0.0",
     "ut-tools": "^5.23.2"
