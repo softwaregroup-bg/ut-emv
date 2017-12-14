@@ -70,6 +70,7 @@ function tagsDecode(emvString, result, dolIdx) {
     let len;
     let val;
     let isDol = false;
+    emvString = emvString.toUpperCase();
     if (emvLongTags.includes(emvString.substr(0, 2).toLowerCase())) { // 2 bytes tag
         tag = emvString.substr(0, 4);
         emvString = emvString.substr(4);
