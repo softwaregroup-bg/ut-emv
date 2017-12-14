@@ -1,3 +1,13 @@
+<a name="6.1.2"></a>
+## [6.1.2](https://github.com/softwaregroup-bg/ut-emv/compare/v6.1.1...v6.1.2) (2017-12-14)
+
+
+### Bug Fixes
+
+* uppercasse emv hex string ([#2](https://github.com/softwaregroup-bg/ut-emv/issues/2)) ([8119603](https://github.com/softwaregroup-bg/ut-emv/commit/8119603))
+
+
+
 <a name="6.1.1"></a>
 ## [6.1.1](https://github.com/softwaregroup-bg/ut-emv/compare/v6.1.0...v6.1.1) (2017-10-24)
 
