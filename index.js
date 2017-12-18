@@ -173,7 +173,7 @@ function tagsEncode(emvTags) {
     let data = Object.assign({}, emvTags);
     let dolOrder = ['CDOL1', 'CDOL2', 'TDOL', 'PDOL', 'DDOL'];
     let result = '';
-    let allTags = Object.keys(data)
+    let allTags = Object.keys(data).filter(t => data[t])
         .sort((a, b) => {
             if ((!data[a].idx && data[a].idx !== 0) || (!data[b].idx && data[b].idx !== 0)) {
                 return 0;
