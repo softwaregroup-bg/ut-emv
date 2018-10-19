@@ -4,24 +4,25 @@
   "main": "./index.js",
   "dependencies": {},
   "devDependencies": {
-    "blue-tape": "1.0.0",
-    "ut-tools": "^5.23.2"
+    "tap": "^10.7.3",
+    "ut-tools": "^6.2.2"
   },
   "scripts": {
     "lint": "ut-lint .",
     "release": "ut-release",
     "changelog": "ut-changelog",
     "check": "ut-check",
-    "cover": "ut-cover",
+    "cover": "ut-cover-parallel",
     "lint-js": "ut-lint-js .",
     "postpublish": "ut-postpublish",
     "postversion": "ut-postversion",
     "precommit": "ut-precommit",
+    "precover": "ut-precover",
     "prepublish": "ut-prepublish",
     "prepush": "ut-prepush",
     "pretest": "ut-pretest",
     "preversion": "ut-preversion",
-    "test": "ut-test",
+    "test": "ut-test-parallel",
     "version": "ut-version",
     "jenkins": "ut-jenkins",
     "gitlab": "ut-gitlab"
