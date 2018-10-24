@@ -226,7 +226,7 @@ function tagsEncode(emvTags) {
             return r;
         }, data);
     // append all fields left to result
-    return result + allTags.map((e) => {
+    return result + Object.keys(data).map((e) => {
         let tagTranslated = translateTagEncode(e);
         let tagObj = data[e];
         let tagLength = getValueHexLength(tagObj);

@@ -5,7 +5,7 @@
   "dependencies": {},
   "devDependencies": {
     "tap": "^10.7.3",
-    "ut-tools": "^6.2.2"
+    "ut-tools": "^6.3.3"
   },
   "scripts": {
     "lint": "ut-lint .",
