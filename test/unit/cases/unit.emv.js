@@ -1,5 +1,5 @@
 const test = require('tap').test;
-const emv = require('../../index');
+const emv = require('../../../index');
 
 const validEmv = {
     'primitive tag': '5A09000000000000000000',
