@@ -13,12 +13,15 @@ function emvEncodeMapTags() {
         .reduce((accum, cur) => Object.assign(accum, cur), {});
 }
 
-function translateTagEncode(tag) {
-    return emvTagsMap.encode[tag] || tag;
+function translateTagEncode(tag = '') {
+    if (tag.startsWith('emv')) {
+        return tag.substr(3);
+    }
+    return emvTagsMap.encode[tag];
 }
 
-function translateTagDecode(tag) {
-    return emvTagsMap.decode[tag.toUpperCase()] || tag;
+function translateTagDecode(tag = '') {
+    return emvTagsMap.decode[tag.toUpperCase()] || `emv${tag}`;
 }
 
 function getNumVal(val, len, dolLenDiff, compressedNumeric) {
