@@ -243,6 +243,33 @@ function tagsEncode(emvTags) {
         return `${tagTranslated}${tagLength}${tagValue}`;
     }).join('');
 }
+/**
+ * Reduce emv to {{key: value}, ...}
+ */
+function flatten(emv = {}) {
+    return Object.keys(emv)
+        .reduce((acc, key) => {
+            acc[key] = emv[key].val;
+            return acc;
+        }, {});
+}
+/**
+ * Expand emv from {{key: value}, ...} to {{tag, len, val}, ...}
+ */
+function unflatten(emv = {}) {
+    return Object.keys(emv)
+        .reduce((acc, key) => {
+            let entity = {
+                tag: translateTagEncode(key),
+                val: emv[key]
+            };
+            acc[key] = {
+                ...entity,
+                len: getValueHexLength(entity)
+            };
+            return acc;
+        }, {});
+}
 
 module.exports = (function emv() {
     if (!emvTagsConfig.map.encode) {
@@ -252,6 +279,8 @@ module.exports = (function emv() {
     return {
         tagsDecode,
         dolDecode,
-        tagsEncode
+        tagsEncode,
+        flatten,
+        unflatten
     };
 })();
