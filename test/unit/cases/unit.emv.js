@@ -24,22 +24,72 @@ const invalidEmv = {
     'ascii message': 'qwerty'
 };
 
-test('Emv encode decode', (t) => {
-    Object.keys(validEmv).forEach(k => {
-        let decoded = emv.tagsDecode(validEmv[k], {});
-        let decodedDols = emv.dolDecode(decoded);
+test('EMV parsing', (t) => {
+    t.test('EMV encode/decode', assert => {
+        Object.keys(validEmv).forEach(k => {
+            let decoded = emv.tagsDecode(validEmv[k], {});
+            let decodedDols = emv.dolDecode(decoded);
 
-        let encoded = emv.tagsEncode(decoded);
+            let encoded = emv.tagsEncode(decoded);
 
-        let secondaryDecoded = emv.tagsDecode(encoded, {});
-        let secondaryDecodedDols = emv.dolDecode(secondaryDecoded);
+            let secondaryDecoded = emv.tagsDecode(encoded, {});
+            let secondaryDecodedDols = emv.dolDecode(secondaryDecoded);
 
-        t.deepEqual(decoded, secondaryDecoded, `ensure no data loss when encoding/decoding ${k}`);
-        t.deepEqual(decodedDols, secondaryDecodedDols, `ensure no data loss when encoding/dol-decoding ${k}`);
+            assert.deepEqual(decoded, secondaryDecoded, `ensure no data loss when encoding/decoding ${k}`);
+            assert.deepEqual(decodedDols, secondaryDecodedDols, `ensure no data loss when encoding/dol-decoding ${k}`);
+        });
+
+        Object.keys(invalidEmv).forEach(k => {
+            assert.throws(() => { emv.tagsDecode(invalidEmv[k], {}); }, new Error('Data integrity error'), `ensure decoding ${k} throws error`);
+        });
+        assert.end();
     });
 
-    Object.keys(invalidEmv).forEach(k => {
-        t.throws(() => { emv.tagsDecode(invalidEmv[k], {}); }, new Error('Data integrity error'), `ensure decoding ${k} throws error`);
+    t.test('Flatten EMV', assert => {
+        assert.same(emv.flatten(), {}, 'No arguments passed');
+        assert.same(emv.flatten({
+            transactionDate: {tag: '9A', len: 3, val: '190226'}
+        }), {transactionDate: '190226'}, 'Single tag');
+        assert.same(emv.flatten({
+            transactionDate: {tag: '9A', len: 3, val: '190226'},
+            amountAuthorised: {tag: '9F02', len: 6, val: '000000000000'},
+            amountOther: {tag: '9F03', len: 6, val: '000000000000'}
+        }), {transactionDate: '190226', amountAuthorised: '000000000000', amountOther: '000000000000'}, 'Multiple tags');
+        assert.end();
+    });
+    t.test('Unflatten EMV', assert => {
+        assert.same(emv.unflatten(), {}, 'No arguments passed');
+        assert.same(emv.unflatten({
+            transactionDate: '190226'
+        }), {
+            transactionDate: {
+                tag: '9A',
+                len: 3,
+                val: '190226'
+            }
+        }, 'Single tag');
+        assert.same(emv.unflatten({
+            transactionDate: '190226',
+            amountAuthorised: '000000000000',
+            amountOther: '000000000000'
+        }), {
+            transactionDate: {
+                tag: '9A',
+                len: '03',
+                val: '190226'
+            },
+            amountAuthorised: {
+                tag: '9F02',
+                len: '06',
+                val: '000000000000'
+            },
+            amountOther: {
+                tag: '9F03',
+                len: '06',
+                val: '000000000000'
+            }
+        }, 'Multiple tags');
+        assert.end();
     });
 
     t.end();
