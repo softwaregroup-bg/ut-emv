@@ -14,6 +14,7 @@ function emvEncodeMapTags() {
 }
 
 function translateTagEncode(tag = '') {
+    // if the tag has 'emv' prepended, returns input value with 'emv' removed
     if (tag.startsWith('emv')) {
         return tag.substr(3);
     }
@@ -21,6 +22,7 @@ function translateTagEncode(tag = '') {
 }
 
 function translateTagDecode(tag = '') {
+    // if the tag is unknown, returns 'emv' prepended input value
     return emvTagsMap.decode[tag.toUpperCase()] || `emv${tag}`;
 }
 
