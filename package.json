@@ -1,6 +1,6 @@
 {
   "name": "ut-emv",
-  "version": "7.0.0-rc-dss.6",
+  "version": "7.0.0",
   "main": "./index.js",
   "dependencies": {},
   "devDependencies": {

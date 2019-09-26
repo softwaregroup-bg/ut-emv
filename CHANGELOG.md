@@ -1,3 +1,21 @@
+# [7.0.0](https://github.com/softwaregroup-bg/ut-emv/compare/v6.1.2...v7.0.0) (2019-09-26)
+
+
+### Bug Fixes
+
+* ignore ([68d51f1](https://github.com/softwaregroup-bg/ut-emv/commit/68d51f1))
+* move common used functions to module ([73958d5](https://github.com/softwaregroup-bg/ut-emv/commit/73958d5))
+* prefix unknown tags ([9882411](https://github.com/softwaregroup-bg/ut-emv/commit/9882411))
+* use filtered object ([7bc6733](https://github.com/softwaregroup-bg/ut-emv/commit/7bc6733))
+* ut-tools version bump ([db0d60b](https://github.com/softwaregroup-bg/ut-emv/commit/db0d60b))
+
+
+### Features
+
+* PS-127 ([95618f6](https://github.com/softwaregroup-bg/ut-emv/commit/95618f6))
+
+
+
 <a name="6.1.2"></a>
 ## [6.1.2](https://github.com/softwaregroup-bg/ut-emv/compare/v6.1.1...v6.1.2) (2017-12-14)
 
