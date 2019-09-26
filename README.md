@@ -20,7 +20,7 @@ params
 
 result (object); each _key: value_ pair contains the following:
 
-- _key_ (string) - EMV tag key
+- _key_ - EMV tag key
 - _value_ (object) - EMV tag object
   - _tag_ (string) - EMV tag
   - _val_ (string) - EMV tag value **OR** nested EMV tags object, in the case
@@ -29,7 +29,7 @@ result (object); each _key: value_ pair contains the following:
 
   **NOTE: if the current tag is a DOL tag, _val_ will have the following _key:
    value_ structure**:
-- _key_ (string) - EMV tag key
+- _key_ - EMV tag key
 - _value_ (object) - EMV tag object
   - _tag_ (string) - EMV tag
   - _val_ (string) - EMV tag value; **NOTE: as the value of a DOL tag does not
@@ -46,7 +46,7 @@ Adds values for tags nested in DOLs
 params
 
 - _emvTags_ (object) - each _key: value_ pair contains the following:
-  - _key_ (string) - EMV tag key
+  - _key_ - EMV tag key
   - _value_ (object) - EMV tag object
     - _tag_ (string) - EMV tag
     - _val_ (string) - EMV tag value; **NOTE: as the value of a DOL tag does
@@ -54,7 +54,7 @@ params
     - _len_ (integer) - length of _val_ in bytes
   **NOTE: for each DOL tag, _val_ will have the following _key:
    value_ structure**:
-- _key_ (string) - EMV tag key
+- _key_ - EMV tag key
 - _value_ (object) - EMV tag object
   - _tag_ (string) - EMV tag
   - _val_ (string) - EMV tag value
@@ -73,7 +73,7 @@ Encodes EMV tag object to EMV tag string
 params
 
 - _emvTags_ (object) - each _key: value_ pair contains the following:
-  - _key_ (string) - EMV tag key
+  - _key_ - EMV tag key
   - _value_ (object) - EMV tag object
     - _val_ (string) - EMV tag value
     - _tag_ (string) - EMV tag
@@ -93,7 +93,7 @@ Reduces EMV tag object to _key: value_ pairs
 
 params (object); each _key: value_ pair contains the following:
 
-- _key_ (string) - EMV tag key
+- _key_ - EMV tag key
 - _value_ (object) - EMV tag object
   - _tag_ (string) - EMV tag
   - _val_ (string) - EMV tag value
@@ -101,7 +101,7 @@ params (object); each _key: value_ pair contains the following:
 
 result (object); each _key: value_ pair contains the following:
 
-- _key_ (string) - EMV tag key
+- _key_ - EMV tag key
 - _value_ (string) - EMV tag value _val_
 
 ### unflatten
@@ -113,12 +113,12 @@ Expands _key: value_ pairs to EMV tags object
 params (object); __Default__: _{}_; each _key: value_ pair contains the
  following:
 
-- _key_ (string) - EMV tag key
+- _key_ - EMV tag key
 - _value_ (string) - EMV tag
 
 result (object); each _key: value_ pair contains the following:
 
-- _key_ (string) - EMV tag key
+- _key_ - EMV tag key
 - _value_ (object) - EMV tag object
   - _tag_ (string) - EMV tag
   - _val_ (string) - EMV tag value
@@ -143,7 +143,7 @@ result
 **NOTE: _emvTagsConfig.map.encode_ global object has the following _key: value_
  structure:**
 
-- _key_ (string) - EMV tag key
+- _key_ - EMV tag key
 - _value_ (string) - EMV tag
 
 ### translateTagEncode
