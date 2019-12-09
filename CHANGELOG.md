@@ -1,3 +1,12 @@
+## [7.0.3](https://github.com/softwaregroup-bg/ut-emv/compare/v7.0.2...v7.0.3) (2019-12-09)
+
+
+### Bug Fixes
+
+* sort tags by index ([47b117e](https://github.com/softwaregroup-bg/ut-emv/commit/47b117e))
+
+
+
 ## [7.0.2](https://github.com/softwaregroup-bg/ut-emv/compare/v7.0.1...v7.0.2) (2019-09-30)
 
 
