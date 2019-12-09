@@ -231,19 +231,21 @@ function tagsEncode(emvTags) {
             return r;
         }, data);
     // append all fields left to result
-    return result + Object.keys(data).map((e) => {
-        let tagTranslated = translateTagEncode(e);
-        let tagObj = data[e];
-        let tagLength = getValueHexLength(tagObj);
-        let tagValue = tagObj.val;
+    return result + Object.keys(data)
+        .sort((a, b) => data[a].idx - data[b].idx)
+        .map((e) => {
+            let tagTranslated = translateTagEncode(e);
+            let tagObj = data[e];
+            let tagLength = getValueHexLength(tagObj);
+            let tagValue = tagObj.val;
 
-        let constructedTagByte = (Buffer.from(tagTranslated, 'hex')).slice(0, 1)[0];
-        if ((constructedTagByte & 32) === 32) {
-            tagValue = tagsEncode(tagObj.val);
-        }
+            let constructedTagByte = (Buffer.from(tagTranslated, 'hex')).slice(0, 1)[0];
+            if ((constructedTagByte & 32) === 32) {
+                tagValue = tagsEncode(tagObj.val);
+            }
 
-        return `${tagTranslated}${tagLength}${tagValue}`;
-    }).join('');
+            return `${tagTranslated}${tagLength}${tagValue}`;
+        }).join('');
 }
 /**
  * Reduce emv to {{key: value}, ...}
