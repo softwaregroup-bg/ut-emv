@@ -1,5 +1,5 @@
 const test = require('tap').test;
-const emv = require('../../../index');
+const emv = require('.');
 
 const validEmv = {
     'primitive tag': '5A09000000000000000000',
@@ -27,16 +27,16 @@ const invalidEmv = {
 test('EMV parsing', (t) => {
     t.test('EMV encode/decode', assert => {
         Object.keys(validEmv).forEach(k => {
-            let decoded = emv.tagsDecode(validEmv[k], {});
-            let decodedDols = emv.dolDecode(decoded);
+            const decoded = emv.tagsDecode(validEmv[k], {});
+            const decodedDols = emv.dolDecode(decoded);
 
-            let encoded = emv.tagsEncode(decoded);
+            const encoded = emv.tagsEncode(decoded);
 
-            let secondaryDecoded = emv.tagsDecode(encoded, {});
-            let secondaryDecodedDols = emv.dolDecode(secondaryDecoded);
+            const secondaryDecoded = emv.tagsDecode(encoded, {});
+            const secondaryDecodedDols = emv.dolDecode(secondaryDecoded);
 
-            assert.deepEqual(decoded, secondaryDecoded, `ensure no data loss when encoding/decoding ${k}`);
-            assert.deepEqual(decodedDols, secondaryDecodedDols, `ensure no data loss when encoding/dol-decoding ${k}`);
+            assert.same(decoded, secondaryDecoded, `ensure no data loss when encoding/decoding ${k}`);
+            assert.same(decodedDols, secondaryDecodedDols, `ensure no data loss when encoding/dol-decoding ${k}`);
         });
 
         Object.keys(invalidEmv).forEach(k => {

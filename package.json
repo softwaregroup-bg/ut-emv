@@ -4,7 +4,7 @@
   "main": "./index.js",
   "dependencies": {},
   "devDependencies": {
-    "tap": "^12.5.3",
+    "tap": "^16.2.0",
     "ut-tools": "^6.30.5"
   },
   "scripts": {
