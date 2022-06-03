@@ -1,3 +1,7 @@
+## [7.0.5](https://github.com/softwaregroup-bg/ut-emv/compare/v7.0.4...v7.0.5) (2022-06-03)
+
+
+
 ## [7.0.4](https://github.com/softwaregroup-bg/ut-emv/compare/v7.0.3...v7.0.4) (2020-01-17)
 
 
